@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>YelpCamp</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="/stylesheets/landing.css">
+    </head>
+    <body>
+		
+		<div class="container">
+			<% if(errorMessage && errorMessage.length > 0){ %>
+				<div class="alert alert-danger flash-message">
+					<%= errorMessage %>
+				</div>
+			<% } %>
+			<% if(successMessage && successMessage.length > 0){ %>
+				<div class="alert alert-success flash-message">
+					<%= successMessage %>
+				</div>
+			<% } %>
+		</div>
+
+		<div id="landing-header">
+			<h1>Welcome to YelpCamp!</h1>
+			<a class="btn btn-success btn-lg" href="/campgrounds">View All Campgrounds</a>
+		</div>
+
+		<ul class="slideshow">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+
+<% include partials/footer %>

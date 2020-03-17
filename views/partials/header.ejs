@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>YelpCamp</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="/stylesheets/main.css">
+    </head>
+    <body>
+		<!-- navbar -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+			<a class="navbar-brand" href="/">YelpCamp</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navRight">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse justify-content-end" id="navRight">
+				<ul class="navbar-nav">
+                    <% if (!currentUser) { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Sign Up</a>
+                        </li>
+                    <% } else { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Welcome <%= currentUser.username %></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    <% } %>
+				</ul>
+			</div>
+		</nav>
+		
+		<!-- flash message -->
+		<div class="container">
+			<% if (successMessage && successMessage.length > 0) { %>
+				<div class="alert alert-success">
+					<%= successMessage %>
+				</div>
+			<% } %>
+			<% if (errorMessage && errorMessage.length > 0) { %>
+			<div class="alert alert-danger">
+				<%= errorMessage %>
+			</div>
+			<% } %>
+		</div>
