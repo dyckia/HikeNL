@@ -49,9 +49,9 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// seed the database
-const seedDB = require("./seed");
-seedDB();
+// // seed the database
+// const seedDB = require("./seed");
+// seedDB();
 
 app.use("/", indexRouter);
 app.use("/campgrounds", campgroundRouter);
