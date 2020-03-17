@@ -1,3 +1,6 @@
+// load dot env variables
+require('dotenv').config()
+
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
@@ -16,7 +19,7 @@ const indexRouter = require("./routes/index.js");
 const campgroundRouter = require("./routes/campgrounds.js");
 const commentRouter = require("./routes/comments.js");
 
-mongoose.connect(process.env.YELPCAMPDB, { useNewUrlParser: true });
+mongoose.connect(process.env.HIKEDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -46,9 +49,9 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// // seed the database
-// const seedDB = require("./seed");
-// seedDB();
+// seed the database
+const seedDB = require("./seed");
+seedDB();
 
 app.use("/", indexRouter);
 app.use("/campgrounds", campgroundRouter);
