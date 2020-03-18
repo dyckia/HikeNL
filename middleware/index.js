@@ -1,4 +1,4 @@
-const Campground = require("../models/campground.js");
+const Trail = require("../models/trail.js");
 const Comment = require("../models/comment.js");
 
 middlewareObj = {};
@@ -11,14 +11,14 @@ middlewareObj.isLoggedIn =  function(req, res, next) {
 	res.redirect("/login");
 }
 
-// middleware for checking a campground's ownership
-middlewareObj.checkCampOwnership = function(req, res, next) {
-	Campground.findById(req.params.campId, (err, foundCamp) => {
-		if(foundCamp.author.id.equals(req.user._id)) {
+// middleware for checking a trail's ownership
+middlewareObj.checkTrailOwnership = function(req, res, next) {
+	Trail.findById(req.params.trailId, (err, foundTrail) => {
+		if(foundTrail.author.id.equals(req.user._id)) {
 			return next();
 		}
 		
-		req.flash("error", "You're not authorized to edit/delete the campground.")
+		req.flash("error", "You're not authorized to edit/delete the trail.")
 		res.redirect("back");
 	});
 }

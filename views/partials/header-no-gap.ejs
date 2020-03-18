@@ -9,7 +9,7 @@
     </head>
     <body>
 		<!-- navbar -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top mb-4">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <a class="navbar-brand" href="/trails">
                 <i class="fas fa-hiking"></i> HikeNL
             </a>
@@ -35,19 +35,21 @@
                         </li>
                     <% } %>
 				</ul>
-			</div>
-		</nav>
-		
-		<!-- flash message -->
-		<div class="container">
-			<% if (successMessage && successMessage.length > 0) { %>
-				<div class="alert alert-success">
-					<%= successMessage %>
-				</div>
-			<% } %>
-			<% if (errorMessage && errorMessage.length > 0) { %>
-			<div class="alert alert-danger">
-				<%= errorMessage %>
-			</div>
-			<% } %>
-		</div>
+            </div>
+        </nav>
+        
+        <!-- flash message -->
+        <div class="jumbo-background pt-3">
+            <div class="container">
+                <% if (successMessage && successMessage.length > 0) { %>
+                <div class="alert alert-success mb-0">
+                    <%= successMessage %>
+                </div>
+                <% } %>
+                <% if (errorMessage && errorMessage.length > 0) { %>
+                <div class="alert alert-danger mb-0">
+                    <%= errorMessage %>
+                </div>
+                <% } %>
+            </div>
+        </div>

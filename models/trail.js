@@ -1,10 +1,16 @@
 const mongoose = require("mongoose");
 
-const campgroundSchema = new mongoose.Schema({
+const trailSchema = new mongoose.Schema({
     name: String,
     image: String,
+    location: String,
+    distance: Number,
+    elevation: Number,
+    routetype: String,
+    difficulty: String,
+    ratings: Number,
     description: String,
-    price: Number,
+    
     author: {
         id: {
             type: mongoose.Schema.Types.ObjectId,
@@ -20,4 +26,4 @@ const campgroundSchema = new mongoose.Schema({
     ]
 });
 
-module.exports = mongoose.model("campground", campgroundSchema);
+module.exports = mongoose.model("trail", trailSchema);

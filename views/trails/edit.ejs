@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <h1 class="text-center mb-4">Edit <%= trail.name %></h1>
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-5">
+            <form action="/trails/<%= trail._id %>?_method=PUT" method="POST">
+				<div class="form-group">
+					<input class="form-control" type="text" name="trail[name]" value="<%= trail.name %>">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="trail[image]" value="<%= trail.image %>">
+                </div>
+				<div class="form-group">
+					<textarea class="form-control" rows="7" name="trail[description]"><%= trail.description %></textarea>
+				</div>
+				<div class="form-group">
+					<input class="btn btn-primary btn-block" type="submit">
+				</div>
+            </form>
+            <a href="/trails">Cancel Changes</a>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

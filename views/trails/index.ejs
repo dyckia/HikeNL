@@ -1,0 +1,27 @@
+<%- include('../partials/header-no-gap') %>
+
+    <div class="jumbotron jumbotron-fluid pt-4">
+        <div class="container">
+            <h1 class="display-4">Welcome To HikeNL!</h1>
+            <p class="lead">Discover the beauty and mightiness of natural Newfoundland</p>
+            <a class="btn btn-success btn-lg" href="/trails/new">Add New Trail</a>
+        </div>
+    </div>
+
+<div class="container">
+    <div class="row">
+        <% trails.forEach((trail) => { %>
+        <div class="col-md-6 col-lg-4 col-xl-3">
+            <div class="card mb-3 text-center">
+                <img class="card-img-top index-img" src="<%= trail.image %>">
+                <div class="card-body">
+                    <h5 class="card-title"><%= trail.name %></h5>
+                    <a class="btn btn-info" href="/trails/<%= trail._id %>">View Details</a>
+                </div>
+            </div>
+        </div>
+        <% }); %>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

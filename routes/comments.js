@@ -1,22 +1,22 @@
 const router = require("express").Router({mergeParams: true});
-const Campground = require("../models/campground.js");
+const Trail = require("../models/trail.js");
 const Comment = require("../models/comment.js");
 const middleware = require("../middleware");
 
 // NEW route
 router.get("/new", middleware.isLoggedIn, (req, res) => {
-	Campground.findById(req.params.campId, (err, campground) => {
+	Trail.findById(req.params.trailId, (err, trail) => {
 		if (err) {
 			console.log(err);
 		} else {
-			res.render("comments/new", {campground: campground});
+			res.render("comments/new", {trail: trail});
 		}
 	});
 });
 
 // CREATE route
 router.post("/", middleware.isLoggedIn, (req, res) => {
-	Campground.findById(req.params.campId, (err, campground) => {
+	Trail.findById(req.params.trailId, (err, trail) => {
 		if (err) {
 			console.log(err);
 		} else {
@@ -27,9 +27,9 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
 					comment.author.id = req.user._id;
 					comment.author.username = req.user.username;
 					comment.save();
-					campground.comments.push(comment);
-					campground.save();
-					res.redirect(`/campgrounds/${campground._id}`);
+					trail.comments.push(comment);
+					trail.save();
+					res.redirect(`/trails/${trail._id}`);
 				}
 			});
 		}
@@ -42,7 +42,7 @@ router.get("/:commentId/edit", middleware.isLoggedIn, middleware.checkCommentOwn
 		if (err) {
 			console.log(err);
 		} else {
-			res.render("comments/edit", {campId: req.params.campId, comment: foundComment});
+			res.render("comments/edit", {trailId: req.params.trailId, comment: foundComment});
 		}
 	});
 });
@@ -53,7 +53,7 @@ router.put("/:commentId", middleware.isLoggedIn, middleware.checkCommentOwnershi
 		if (err) {
 			console.log(err);
 		} else {
-			res.redirect(`/campgrounds/${req.params.campId}`);
+			res.redirect(`/trails/${req.params.trailId}`);
 		}
 	});
 });
@@ -64,13 +64,13 @@ router.delete("/:commentId", middleware.isLoggedIn, middleware.checkCommentOwner
 		if (err) {
 			console.log(err);
 		} else {
-            Campground.findByIdAndUpdate(req.params.campId, {
+            Trail.findByIdAndUpdate(req.params.trailId, {
                 $pull: {comments: req.params.commentId}
-            }, (err, updatedCampground) => {
+            }, (err, updatedTrail) => {
                 if (err) {
                     console.log(err);
                 } else {
-                    res.redirect(`/campgrounds/${req.params.campId}`);
+                    res.redirect(`/trails/${req.params.trailId}`);
                 }
             });
 		}

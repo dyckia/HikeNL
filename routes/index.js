@@ -20,7 +20,7 @@ router.post("/register", (req, res) => {
 
         passport.authenticate("local")(req, res, ()=> {
 			req.flash("success", "You have successfully created an account!");
-            res.redirect("/campgrounds");
+            res.redirect("/trails");
         });
     });
 });
@@ -30,7 +30,7 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", passport.authenticate("local", {
-    successRedirect: "/campgrounds",
+    successRedirect: "/trails",
 	successFlash: "You have successfully logged in!",
     failureRedirect: "/login",
 	failureFlash: true

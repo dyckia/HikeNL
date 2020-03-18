@@ -1,0 +1,111 @@
+<%- include('../partials/header') %>
+
+<div class="container mb-4">
+	<div class="row">
+		<div class="col-md-3">
+            <h5 class="mb-2 ml-2">
+                Basic Info
+            </h5>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h6 class="mb-1 text-muted">Difficulty:</h5>
+                        <p class="mb-0">Easy</p>
+                </li>
+                <li class="list-group-item">
+                    <h6 class="mb-1 text-muted">Location:</h5>
+                        <p class="mb-0">St. John's</p>
+                </li>
+                <li class="list-group-item">
+                    <h6 class="mb-1 text-muted">Distance:</h5>
+                        <p class="mb-0">13.4 km</p>
+                </li>
+                <li class="list-group-item">
+                    <h6 class="mb-1 text-muted">Elevation Gain:</h5>
+                        <p class="mb-0">437 m</p>
+                </li>
+                <li class="list-group-item">
+                    <h6 class="mb-1 text-muted">Route Type:</h5>
+                        <p class="mb-0">Out & Back</p>
+                </li>
+            </ul>
+            <a href="/trails" class="btn btn-block btn-outline-primary border-2 mt-3">Go Back</a>
+		</div>
+		<div class="col-md-9">
+			<div class="card mb-4">
+				<img class="card-img-top detail-img" src="<%= trail.image %>">
+				<div class="card-body">
+					<div class="d-flex justify-content-between">
+						<h5><%= trail.name %></h5>
+                        <div>
+                            <p class="text-muted">
+                                <strong>Rating: </strong><%= trail.price %> / 5
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <em>Submitted by <%= trail.author.username %></em>
+                        <div>
+                            <% if (currentUser && trail.author.id.equals(currentUser._id)) { %>
+                            <a class="mr-2 btn btn-sm btn-warning" href="/trails/<%= trail._id %>/edit">
+                                Edit
+                            </a>
+                            <form class="d-inline" action="/trails/<%= trail._id %>?_method=DELETE" method="POST">
+                                <input class="btn btn-sm btn-danger" type="submit" value="Delete">
+                            </form>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="border-top my-3"></div>
+                    <p><%= trail.description %></p>
+                    <div class="border-top my-3"></div>
+                    <p class="lead">
+                        <span class="badge badge-secondary">hiking</span>
+                        <span class="badge badge-secondary">dogs on leash</span>
+                        <span class="badge badge-secondary">walking</span>
+                        <span class="badge badge-secondary">river</span>
+                        <span class="badge badge-secondary">running</span>
+                        <span class="badge badge-secondary">cave</span>
+                        <span class="badge badge-secondary">forest</span>
+                        <span class="badge badge-secondary">rocky</span>
+                    </p>
+				</div>
+            </div>
+            
+
+            <!-- Comments -->
+			<div class="card bg-light">
+				<div class="card-header">
+					<div class="d-flex justify-content-between align-items-center mx-1">
+						<h5>Reviews</h5>
+						<a class="btn btn-sm btn-success" href="/trails/<%= trail._id %>/comments/new">Leave A Review</a>
+					</div>
+				</div>
+				<div class="card-body">
+					<% trail.comments.forEach( (comment) => { %>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item bg-light">
+								<div class="d-flex justify-content-between">
+									<h6 class="mb-1"><%= comment.author.username %></h6>
+									<!-- <small>3 days ago</small> -->
+								</div>
+								<p class="mb-1"><%= comment.text %></p>
+								<% if (currentUser && comment.author.id.equals(currentUser._id)) { %>
+									<div class="mt-2">
+										<a class="btn btn-warning btn-sm mr-2" href="/trails/<%= trail._id %>/comments/<%= comment._id %>/edit">Edit</a>
+										<form class="d-inline" action="/trails/<%= trail._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+											<button class="btn btn-danger btn-sm">
+												Delete
+											</button>
+										</form>
+									</div>
+								<% } %>
+							</li>
+						</ul>
+					<% }); %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%- include('../partials/footer') %>
