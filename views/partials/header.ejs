@@ -10,7 +10,7 @@
     <body>
 		<!-- navbar -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top mb-4">
-            <a class="navbar-brand" href="/trails">
+            <a class="navbar-brand" href="/">
                 <i class="fas fa-hiking"></i> HikeNL
             </a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navRight">
@@ -18,6 +18,11 @@
 			</button>
 
 			<div class="collapse navbar-collapse justify-content-end" id="navRight">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/trails">View All Trails</a>
+                    </li>
+                </ul>
 				<ul class="navbar-nav">
                     <% if (!currentUser) { %>
                         <li class="nav-item">

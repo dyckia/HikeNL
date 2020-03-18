@@ -1,7 +1,7 @@
 {
-  "name": "hike-east-coast",
+  "name": "hikenl",
   "version": "1.0.0",
-  "description": "- [x] Initialize npm project - [x] Setup express, ejs & body-parser - [x] Create landing view - [x] Add campgrounds view - [x] Add new campground view - [x] Create header and footer partials - [x] Import Bootstrap (4.3.1) - [x] Add nav bar to all page - [x] Style the campground view - [x] Style the add new campground view",
+  "description": "Discover the beauty and mightiness of natural Newfoundland.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
