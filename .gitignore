@@ -1,5 +1,6 @@
 node_modules/
 .env
+seed.js
 
 # OS related files
 .DS_Store
