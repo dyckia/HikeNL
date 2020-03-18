@@ -19,10 +19,10 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     const name = req.body.trailName;
     const image = req.body.imgUrl;
     const price = req.body.price;
-	const description = req.body.trailDesc;
-	const author = {id: req.user._id, username: req.user.username}
-	const newTrail = {name: name, image: image, price: price, description: description, author: author};
-	Trail.create(newTrail, (err, newTrail) => {
+    const description = req.body.trailDesc;
+    const newTrail = req.body.trail;
+	newTrail.author = {id: req.user._id, username: req.user.username};
+    Trail.create(newTrail, (err, newTrail) => {
 		if (err) {
 			console.log(err);
 		} else {

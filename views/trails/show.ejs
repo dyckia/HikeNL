@@ -9,23 +9,23 @@
             <ul class="list-group">
                 <li class="list-group-item">
                     <h6 class="mb-1 text-muted">Difficulty:</h5>
-                        <p class="mb-0">Easy</p>
+                        <p class="mb-0"><%= trail.difficulty %></p>
                 </li>
                 <li class="list-group-item">
                     <h6 class="mb-1 text-muted">Location:</h5>
-                        <p class="mb-0">St. John's</p>
+                        <p class="mb-0"><%= trail.location %></p>
                 </li>
                 <li class="list-group-item">
                     <h6 class="mb-1 text-muted">Distance:</h5>
-                        <p class="mb-0">13.4 km</p>
+                        <p class="mb-0"><%= trail.distance %> km</p>
                 </li>
                 <li class="list-group-item">
                     <h6 class="mb-1 text-muted">Elevation Gain:</h5>
-                        <p class="mb-0">437 m</p>
+                        <p class="mb-0"><%= trail.elvagain %> m</p>
                 </li>
                 <li class="list-group-item">
                     <h6 class="mb-1 text-muted">Route Type:</h5>
-                        <p class="mb-0">Out & Back</p>
+                        <p class="mb-0"><%= trail.type %></p>
                 </li>
             </ul>
             <a href="/trails" class="btn btn-block btn-outline-primary border-2 mt-3">Go Back</a>
@@ -38,7 +38,7 @@
 						<h5><%= trail.name %></h5>
                         <div>
                             <p class="text-muted">
-                                <strong>Rating: </strong><%= trail.price %> / 5
+                                <strong>Ratings: </strong>4 / 5
                             </p>
                         </div>
                     </div>

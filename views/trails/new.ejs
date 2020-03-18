@@ -1,24 +1,74 @@
 <%- include('../partials/header') %>
 
-<div class="container">
-    <h1 class="text-center mb-4">Create a New Trail</h1>
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6 col-xl-5">
-            <form action="/trails" method="POST">
-				<div class="form-group">
-					<input class="form-control" type="text" name="trailName" placeholder="Trail Name">
-				</div>
-				<div class="form-group">
-					<input class="form-control" type="text" name="imgUrl" placeholder="Image URL">
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-md-10 col-lg-8 offset-md-1 offset-lg-2">
+            <div class="card">
+                <div class="card-header text-center">
+                    <h3 class="mb-0">New Trail</h3>
                 </div>
-				<div class="form-group">
-					<textarea class="form-control" rows="7" name="trailDesc" placeholder="Description about the trail"></textarea>
-				</div>
-				<div class="form-group">
-					<input class="btn btn-primary btn-block" type="submit">
-				</div>
-            </form>
-            <a href="/trails">Go Back</a>
+                <div class="card-body">
+                    <form action="/trails" method="POST">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="name">Trail Name</label>
+                                <input class="form-control" id="name" type="text" name="trail[name]">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="location">Location</label>
+                                <input class="form-control" id="location" type="text" name="trail[location]">
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="url">Image URL</label>
+                                <input class="form-control" id="url" type="text" name="trail[image]">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="distance">Distance</label>
+                                <div class="input-group">
+                                    <input class="form-control" id="distance" type="number" step="0.01" name="trail[distance]">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">km</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="elevation-gain">Elevation Gain</label>
+                                <div class="input-group">
+                                    <input class="form-control" id="elevation-gain" type="number" name="trail[elvagain]">
+                                    <div class="input-group-append">
+                                        <div class="input-group-text">m</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="route-type">Route Type</label>
+                                <select class="form-control" id="route-type" name="trail[type]">
+                                    <option value="">Choose one</option>
+                                    <option value="Loop">Loop</option>
+                                    <option value="Point to Point">Point to Point</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="difficulty">Difficulty</label>
+                                <select class="form-control" id="difficulty" name="trail[difficulty]">
+                                    <option value="">Choose one</option>
+                                    <option value="Easy">Easy</option>
+                                    <option value="Moderate">Moderate</option>
+                                    <option value="Hard">Hard</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" id="description" rows="6" name="trail[description]" placeholder="Description about the trail"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-block btn-primary" type="submit">
+                        </div>
+                    </form>
+                    <a href="/trails" class="btn btn-block btn-secondary">Cancel</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

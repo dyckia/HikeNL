@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 const trailSchema = new mongoose.Schema({
     name: String,
-    image: String,
     location: String,
+    image: String,
     distance: Number,
-    elevation: Number,
-    routetype: String,
+    elvagain: Number,
+    type: String,
     difficulty: String,
     ratings: Number,
     description: String,
