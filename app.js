@@ -19,7 +19,7 @@ const indexRouter = require("./routes/index.js");
 const trailRouter = require("./routes/trails.js");
 const commentRouter = require("./routes/comments.js");
 
-mongoose.connect(process.env.HIKEDB, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.HIKEDB, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));

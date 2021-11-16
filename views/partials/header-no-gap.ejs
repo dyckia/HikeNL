@@ -1,60 +1,72 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>HikeNL</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="/stylesheets/main.css">
-        <!-- Font Awesome -->
-        <script src="https://kit.fontawesome.com/fabcc8a5a5.js" crossorigin="anonymous"></script>
-    </head>
-    <body>
-		<!-- navbar -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/dark.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/fabcc8a5a5.js" crossorigin="anonymous"></script>
+
+    <title>HikeNL</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
             <a class="navbar-brand" href="/">
                 <i class="fas fa-hiking"></i> HikeNL
             </a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navRight">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navRight">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-			<div class="collapse navbar-collapse justify-content-end" id="navRight">
+            <div class="collapse navbar-collapse justify-content-end" id="navRight">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="/trails">View All Trails</a>
                     </li>
                 </ul>
-				<ul class="navbar-nav">
+                <ul class="navbar-nav">
                     <% if (!currentUser) { %>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/register">Sign Up</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Sign Up</a>
+                    </li>
                     <% } else { %>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Welcome <%= currentUser.username %></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/logout">Logout</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Welcome <%= currentUser.username %></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </li>
                     <% } %>
-				</ul>
-            </div>
-        </nav>
-        
-        <!-- flash message -->
-        <div class="jumbo-background pt-3">
-            <div class="container">
-                <% if (successMessage && successMessage.length > 0) { %>
-                <div class="alert alert-success mb-0">
-                    <%= successMessage %>
-                </div>
-                <% } %>
-                <% if (errorMessage && errorMessage.length > 0) { %>
-                <div class="alert alert-danger mb-0">
-                    <%= errorMessage %>
-                </div>
-                <% } %>
+                </ul>
             </div>
         </div>
+
+    </nav>
+
+    <!-- flash message -->
+    <div class="jumbo-background pt-3">
+        <div class="container">
+            <% if (successMessage && successMessage.length > 0) { %>
+            <div class="alert alert-success mb-0">
+                <%= successMessage %>
+            </div>
+            <% } %>
+            <% if (errorMessage && errorMessage.length > 0) { %>
+            <div class="alert alert-danger mb-0">
+                <%= errorMessage %>
+            </div>
+            <% } %>
+        </div>
+    </div>
