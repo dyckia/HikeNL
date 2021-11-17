@@ -22,13 +22,15 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     const description = req.body.trailDesc;
     const newTrail = req.body.trail;
 	newTrail.author = {id: req.user._id, username: req.user.username};
-    Trail.create(newTrail, (err, newTrail) => {
-		if (err) {
-			console.log(err);
-		} else {
-			res.redirect("/trails");
-		}
-	});
+    req.flash("success", "New trail submitted. Your trail will appear once approved by the Admin.");
+	res.redirect("/trails");
+    // Trail.create(newTrail, (err, newTrail) => {
+	// 	if (err) {
+	// 		console.log(err);
+	// 	} else {
+	// 		res.redirect("/trails");
+	// 	}
+	// });
 });
 
 // NEW route
